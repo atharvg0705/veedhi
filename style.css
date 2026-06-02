@@ -1,7 +1,7 @@
 :root,html[data-theme="light"]{
   --bg0:#fdfaf3;
   --bg1:#f4ede0;
-  --bg2:#e6d8c5;
+  --bg2:#e9ddcc;
   --nav-bg:rgba(253,248,240,.82);
   --glass:rgba(255,255,255,.52);
   --glass-b:rgba(200,170,100,.24);
@@ -789,66 +789,96 @@ html[data-theme="dark"] .mv-section{
 
 /* PHONE NAV/HERO ADJUSTMENTS */
 @media(max-width:430px){
+  html,body{
+    overflow-x:hidden;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+
   .nav{height:54px;padding:0 14px}
-  .hero{padding-top:54px}
+  .hero{
+    height:auto;
+    min-height:100svh;
+    padding-top:72px;
+    padding-bottom:40px;
+    align-items:flex-start;
+  }
+
   .nav-brand{font-size:1rem;letter-spacing:.08em}
   .timer-label{font-size:.54rem}
   .timer-count{font-size:.84rem}
   .icon-btn{width:36px;height:36px}
-}
 
-/* MOBILE FIXES */
-@media (max-width: 430px){
-  .hero-content{
-    padding:0 5vw;
-  }
+  .hero-content{padding:0 5vw 24px}
   .hero-title-row{
     flex-direction:column;
     align-items:flex-start;
-    gap:16px;
+    gap:14px;
   }
-  .hero-title-group{
-    max-width:100%;
-  }
-  .hero-title{
-    max-width:100%;
-  }
+  .hero-title-group{max-width:100%}
+  .hero-title{max-width:100%}
+
   .ht-birthday{
-    font-size:clamp(3.1rem,18vw,4.4rem);
-    line-height:.92;
+    font-size:clamp(2.8rem,16vw,4rem);
+    line-height:.95;
   }
   .ht-name{
-    font-size:clamp(2.5rem,12vw,3.8rem);
+    font-size:clamp(2.2rem,11vw,3.4rem);
   }
   .ht-chorghe{
-    font-size:clamp(1.7rem,7vw,2.7rem);
+    font-size:clamp(1.5rem,6vw,2.3rem);
   }
+  .hero-sub{
+    font-size:clamp(.95rem,4vw,1.2rem);
+  }
+  .hero-scroll{margin-top:12px}
+
   .hero-medallion-right{
     left:0;
     top:0;
-    margin-top:18px;
+    margin-top:14px;
     margin-right:0;
-    align-self:center;
-    transform:scale(.92);
-    transform-origin:center;
+    align-self:flex-start;
+    transform:scale(.84);
+    transform-origin:left top;
   }
   .hero-medallion{
-    width:210px;
-    height:235px;
-    min-width:210px;
-    min-height:235px;
+    width:190px;
+    height:212px;
+    min-width:190px;
+    min-height:212px;
   }
   .hero-frame-photo{
-    width:112px;
-    height:146px;
+    width:104px;
+    height:136px;
   }
   .hero-vertical{display:none}
-  .vid-modal-grid{
-    grid-template-columns:1fr;
+
+  .section{padding:70px 5vw 56px}
+  .arc-stage{height:300px}
+  .arc-item.c{width:168px;height:240px}
+  .arc-item.s1{width:132px;height:190px}
+  .arc-item.s2{display:none}
+
+  .mv-grid{gap:24px}
+  .msg-card{
+    grid-template-columns:42px 1fr;
+    padding:13px;
   }
+  .msg-avatar{
+    width:42px;
+    height:42px;
+  }
+
   .vid-modal-inner{
     width:96%;
-    padding:18px;
+    padding:16px;
+    max-height:86svh;
+    overflow:auto;
+  }
+  .vid-modal-grid{
+    grid-template-columns:1fr;
+    gap:10px;
   }
   .vid-shell video{
     aspect-ratio:9/16;
@@ -856,7 +886,7 @@ html[data-theme="dark"] .mv-section{
 }
 
 /* TABLET HERO TWEAKS */
-@media (min-width: 431px) and (max-width: 768px){
+@media (min-width:431px) and (max-width:768px){
   .hero-medallion-right{
     left:110px;
     top:20px;
