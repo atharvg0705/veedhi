@@ -834,24 +834,26 @@ html[data-theme="dark"] .mv-section{
   .hero-scroll{margin-top:12px}
 
   .hero-medallion-right{
-    left:0;
-    top:0;
-    margin-top:14px;
-    margin-right:0;
-    align-self:flex-start;
-    transform:scale(.84);
-    transform-origin:left top;
-  }
-  .hero-medallion{
-    width:190px;
-    height:212px;
-    min-width:190px;
-    min-height:212px;
-  }
-  .hero-frame-photo{
-    width:104px;
-    height:136px;
-  }
+  left:0;
+  top:0;
+  margin-top:16px;
+  margin-right:0;
+  align-self:flex-start;
+  transform:scale(.96);
+  transform-origin:left top;
+}
+
+.hero-medallion{
+  width:220px;
+  height:245px;
+  min-width:220px;
+  min-height:245px;
+}
+
+.hero-frame-photo{
+  width:125px;
+  height:165px;
+}
   .hero-vertical{display:none}
 
   .section{padding:70px 5vw 56px}
