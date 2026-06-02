@@ -1,8 +1,7 @@
-:root,
-html[data-theme="light"]{
+:root,html[data-theme="light"]{
   --bg0:#fdfaf3;
   --bg1:#f4ede0;
-  --bg2:#e6d8c5;
+  --bg2:#e9ddcc;
   --nav-bg:rgba(253,248,240,.82);
   --glass:rgba(255,255,255,.52);
   --glass-b:rgba(200,170,100,.24);
@@ -80,11 +79,7 @@ body::before{
   transition:top .28s ease,background .3s ease;
   pointer-events:none;
 }
-.nav:hover,
-.nav.show{
-  top:0;
-  pointer-events:auto;
-}
+.nav:hover,.nav.show{top:0;pointer-events:auto}
 .nav-left{min-width:160px}
 .timer-wrap{display:flex;flex-direction:column;gap:1px}
 .timer-label{
@@ -260,7 +255,7 @@ body::before{
 /* HERO FRAME */
 .hero-medallion{
   width:260px;
-  height:280px;
+  height:310px;
   position:relative;
   flex:0 0 auto;
   display:grid;
@@ -269,7 +264,7 @@ body::before{
   margin-left:auto;
   filter:drop-shadow(0 8px 24px rgba(0,0,0,.18));
   min-width:260px;
-  min-height:280px;
+  min-height:310px;
 }
 .hero-medallion-right{margin-left:auto}
 .hero-frame-art{
@@ -288,8 +283,8 @@ body::before{
   left:50%;
   top:52%;
   transform:translate(-50%,-50%);
-  width:118px;
-  height:150px;
+  width:140px;
+  height:180px;
   border-radius:18px;
   overflow:hidden;
   z-index:1;
@@ -449,8 +444,11 @@ body::before{
   letter-spacing:.1em;
 }
 
-/* MSG + VIDEO SECTION */
+/* MSG + VIDEO */
 .mv-section{
+  background:linear-gradient(180deg, rgba(122,181,255,.18), rgba(17,30,51,.95));
+}
+html[data-theme="light"] .mv-section{
   background:linear-gradient(180deg, rgba(172,213,255,.26), rgba(245,238,226,.92));
 }
 html[data-theme="dark"] .mv-section{
@@ -462,8 +460,6 @@ html[data-theme="dark"] .mv-section{
   gap:40px;
   align-items:start;
 }
-
-/* MESSAGE CARDS */
 .msg-list{display:flex;flex-direction:column;gap:14px}
 .msg-card{
   display:grid;
@@ -488,32 +484,21 @@ html[data-theme="dark"] .mv-section{
   height:100%;
   object-fit:cover;
 }
-
-/* HIGH-CONTRAST LIGHT MODE TEXT */
 .msg-body h4{
   font-family:'IM Fell English',serif;
   font-size:1.05rem;
-  color:#1a1d29;     /* darker, not muted blue */
+  color:var(--blue);
   margin-bottom:3px;
 }
 .msg-preview{
   font-size:.84rem;
-  color:#3c4250;     /* darker grey for readability */
+  color:var(--muted);
   line-height:1.55;
   display:-webkit-box;
   -webkit-line-clamp:2;
   -webkit-box-orient:vertical;
   overflow:hidden;
 }
-
-/* Dark mode: keep message text light */
-html[data-theme="dark"] .msg-body h4{
-  color:#ffffff;
-}
-html[data-theme="dark"] .msg-preview{
-  color:#e6e9f5;
-}
-
 .read-btn{
   margin-top:8px;
   border:none;
@@ -530,7 +515,7 @@ html[data-theme="dark"] .msg-preview{
 }
 .read-btn:hover{opacity:.7}
 
-/* VIDEO TRIGGER */
+/* VID TRIGGER */
 .vid-trigger{
   position:relative;
   overflow:hidden;
@@ -716,7 +701,7 @@ html[data-theme="dark"] .msg-preview{
   font-size:1.1rem;
 }
 
-/* GENERIC MODALS */
+/* MODALS */
 .modal{
   display:none;
   position:fixed;
@@ -769,21 +754,25 @@ html[data-theme="dark"] .msg-preview{
   position:relative;
   overflow:hidden;
   min-height:94px;
-  background:#f0c84a;
+  background:transparent;
 }
-.footer::after{
-  content:none;
+.footer::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url("assets/footer-banner.jpg") center/cover no-repeat;
+  z-index:-1;
 }
 .footer p{
   font-family:'Cormorant Garamond',serif;
   font-style:italic;
   font-size:1rem;
-  color:#eef0f3;
+  color:#18243a;
   letter-spacing:.1em;
 }
-.footer em{color:#ffffff}
+.footer em{color:#1a2f52}
 
-/* RESPONSIVE */
+/* RESPONSIVE BASE */
 @media(max-width:900px){
   .mv-grid{grid-template-columns:1fr}
   .arc-item.s3{display:none}
@@ -797,12 +786,15 @@ html[data-theme="dark"] .msg-preview{
   .arc-item.s1{height:230px;width:152px}
   .arc-item.s2{display:none}
 }
+
+/* PHONE NAV/HERO ADJUSTMENTS */
 @media(max-width:430px){
   html,body{
     overflow-x:hidden;
     overflow-y:auto;
     -webkit-overflow-scrolling:touch;
   }
+
   .nav{height:54px;padding:0 14px}
   .hero{
     height:auto;
@@ -811,6 +803,7 @@ html[data-theme="dark"] .msg-preview{
     padding-bottom:40px;
     align-items:flex-start;
   }
+
   .nav-brand{font-size:1rem;letter-spacing:.08em}
   .timer-label{font-size:.54rem}
   .timer-count{font-size:.84rem}
@@ -824,6 +817,7 @@ html[data-theme="dark"] .msg-preview{
   }
   .hero-title-group{max-width:100%}
   .hero-title{max-width:100%}
+
   .ht-birthday{
     font-size:clamp(2.8rem,16vw,4rem);
     line-height:.95;
@@ -840,24 +834,49 @@ html[data-theme="dark"] .msg-preview{
   .hero-scroll{margin-top:12px}
 
   .hero-medallion-right{
-    left:0;
-    top:0;
-    margin-top:16px;
-    margin-right:0;
-    align-self:flex-start;
-    transform:scale(.96);
-    transform-origin:left top;
-  }
-  .hero-medallion{
-    width:220px;
-    height:245px;
-    min-width:220px;
-    min-height:245px;
-  }
-  .hero-frame-photo{
-    width:125px;
-    height:165px;
-  }
+.hero-medallion-right{
+  left:0;
+  top:0;
+  margin-top:16px;
+  margin-top:10px;
+  margin-right:0;
+  align-self:flex-start;
+  transform:scale(.96);
+  transform:scale(.98);
+  transform-origin:left top;
+}
+
+.hero-medallion{
+  width:220px;
+  height:245px;
+  min-width:220px;
+  min-height:245px;
+  width:230px;
+  height:270px;
+  min-width:230px;
+  min-height:270px;
+}
+
+.hero-frame-photo{
+  width:125px;
+  height:165px;
+  width:132px;
+  height:172px;
+  border-radius:50% / 56%;
+  overflow:hidden;
+  background:transparent;
+}
+
+.hero-frame-photo .hero-portrait{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 18%;
+  border-radius:50% / 56%;
+}
+  .hero-frame-art{
+  filter:drop-shadow(0 14px 28px rgba(0,0,0,.10));
+}
   .hero-vertical{display:none}
 
   .section{padding:70px 5vw 56px}
@@ -868,13 +887,14 @@ html[data-theme="dark"] .msg-preview{
 
   .mv-grid{gap:24px}
   .msg-card{
-    grid-template-columns:44px 1fr;
-    padding:14px;
+    grid-template-columns:42px 1fr;
+    padding:13px;
   }
   .msg-avatar{
-    width:44px;
-    height:44px;
+    width:42px;
+    height:42px;
   }
+
   .vid-modal-inner{
     width:96%;
     padding:16px;
@@ -890,7 +910,7 @@ html[data-theme="dark"] .msg-preview{
   }
 }
 
-/* Tablet hero tweak */
+/* TABLET HERO TWEAKS */
 @media (min-width:431px) and (max-width:768px){
   .hero-medallion-right{
     left:110px;
